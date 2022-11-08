@@ -8,6 +8,7 @@
 \LoadClass{letter}
 
 \usepackage{graphicx}
+\usepackage{changepage}
 
 \makeatletter
 \signature{\vspace{1cm}\raisebox{-1ex}[0in][0in]{\includegraphics{signature.pdf}}\\ \@mysignature}
@@ -16,7 +17,7 @@
 \makeatother
 
 \usepackage{calc}
-\RequirePackage[top=0.75in,bottom=1in,left=1.25in,right=0.5in]{geometry}
+\RequirePackage[top=0.75in,bottom=1in,left=1in,right=1.5in]{geometry}
 
 %\usepackage{xespotcolor}\usepackage{color}
 %\NewSpotColorSpace{PANTONE}
@@ -29,12 +30,16 @@
 \usepackage{tikz}
 
 \usepackage{fontspec}
-\setsansfont{Proxima Nova}
-\setmainfont{TeX Gyre Termes}
+\setsansfont{Buckeye Sans}
+\renewcommand\rmdefault{tgtermes}
+\renewcommand\bfdefault{b}
+\setmainfont{Buckeye Serif}
+%\setmainfont{TeX Gyre Termes}
 
+\makeatletter
 
 \address{\begin{tikzpicture}[remember picture, overlay, inner sep=0pt, outer sep=0pt]
-    \node [shift={(0in,-0.6in)},anchor=north east]  at (current page.north)
+    \node [shift={(-0.254in,-0.5in)},anchor=north east]  at (current page.north)
         {%
     \begin{tikzpicture}[y=1pt, x=1pt, yscale=.46289, xscale=.46289, inner sep=0pt, outer sep=0pt]
   \begin{scope}[scale=0.100]
@@ -268,21 +273,28 @@
       (5430.2700,512.1330) -- (5402.9900,507.7580);
   \end{scope}
 \end{tikzpicture}};\end{tikzpicture}
-\hfill\parbox{2in}{\fontsize{7pt}{9pt}\sffamily\color{osugray}\begin{flushright}
-    \textcolor{scarlet}{\fontsize{8.5pt}{9.5pt}\sffamily Natural and Mathematical Sciences} \\[1ex]
+\begin{tikzpicture}[remember picture, overlay, inner sep=0pt, outer sep=0pt]
+    \node [shift={(-0.5in,-0.7in)},anchor=north east]  at (current page.north east)
+        {%
+\parbox{2in}{
+  \fontsize{9pt}{11pt}\sffamily\color{osugray}\begin{adjustwidth}{0in}{0in}\begin{flushright}    \textcolor{scarlet}{\fontsize{9pt}{11pt}\sffamily\bfseries Natural and Mathematical Sciences} \\[1ex]
     Department of Mathematics \\[1ex]
     100 Math Tower \\
     231 West 18th Avenue \\
     Columbus, OH  43210 \\[1ex]
     614-292-4975 Phone \\
-    math.osu.edu
+    math.osu.edu \\[1ex]
+    \@mydate
     \end{flushright}
-}}
+    \end{adjustwidth}
+  }};\end{tikzpicture}
+\vspace{0.5in}
+}
 
-\makeatletter
-\date{\null\hfill\makebox[0in][r]{\fontsize{7pt}{9pt}\sffamily\color{osugray}\@mydate}}
+\date{}
 \newcommand{\@mydate}{\today}
 \renewcommand{\date}[1]{\renewcommand{\@mydate}{#1}}
+
 \makeatother
 
 \renewcommand{\stopletter}{\vfill}

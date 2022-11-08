@@ -4,7 +4,7 @@ This LaTeX document class produces the appropriate letterhead for the
 math department.
 
 It expects to be compiled (twice!) with `xelatex` because it uses
-`fontspec` to pull in Proxima Nova.
+`fontspec` to pull in the fonts `Buckeye Sans` and `Buckeye Serif`p.
 
 It also expects the file `signature.pdf` to be available in order to
 place a picture of your signature on the bottom of the page.
